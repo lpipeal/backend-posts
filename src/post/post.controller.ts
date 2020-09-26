@@ -5,7 +5,7 @@ import { CreatePostDto, EditPostDto } from './dtos';
 import { PostService } from './post.service';
 
 @ApiTags('Posts')
-@Controller('post')
+@Controller('posts')
 export class PostController {
 
   constructor(private readonly postService:PostService){}
@@ -15,7 +15,7 @@ export class PostController {
     async getMany(){
      const data = await this.postService.getMany();   
       return {
-        message:"Post Cargados",
+        message:"Posts Cargados",
         data: data
       }
     

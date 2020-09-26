@@ -23,7 +23,7 @@ export class PostService {
     }
 
     async createOne(dto:CreatePostDto){
-        const post = this.postRepository.create(dto as any);
+        const post = await this.postRepository.create(dto as any);
         return await this.postRepository.save(post);
     }
 
