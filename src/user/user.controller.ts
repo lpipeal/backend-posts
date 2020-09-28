@@ -47,7 +47,11 @@ export class UserController {
 
     @Delete(':id')
     async deleteOne(@Param('id') id:number){
-      return  await this.userService.deleteOne(id);
+        const data= await this.userService.deleteOne(id);
+        return {
+            message:"Usuario Eliminado",
+            data:data
+        }
     }
 
 }

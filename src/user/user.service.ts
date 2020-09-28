@@ -36,7 +36,9 @@ async editOne(id:number, dto:EditUserDto){
 }
 
 async deleteOne(id:number){
-  return await this.userRepository.delete(id);
+    const user = await this.userRepository.findOne(id); 
+    if(!user) throw new NotFoundException();
+    return await this.userRepository.remove(user);
 }
 
 }
