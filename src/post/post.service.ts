@@ -23,7 +23,7 @@ export class PostService {
     }
 
     async createOne(dto:CreatePostDto){
-        const post = this.postRepository.create(dto as any);
+        const post = await this.postRepository.create(dto as any);
         return await this.postRepository.save(post);
     }
 
@@ -35,7 +35,9 @@ export class PostService {
     }
 
     async deleteOne(id:number){
-        return await this.postRepository.delete(id);
+        const post = await this.postRepository.findOne(id); 
+        if(!post) throw new NotFoundException();
+        return await this.postRepository.remove(post);
     }
 
 
