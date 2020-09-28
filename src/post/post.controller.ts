@@ -51,38 +51,12 @@ export class PostController {
     }
 
     @Delete(':id')
-    deleteOne(@Param('id') id: number){
-      return this.postService.deleteOne(id);  
-      // return {
-      //   message:"Post Eliminado",
-      //   data: data
-      // }
+    async deleteOne(@Param('id') id: number){
+      const data= await this.postService.deleteOne(id);
+      return {
+          message:"Post Eliminado",
+          data:data
+      }
+
     }
 }
-
-// @Get(':id') 
-// getOne(
-//   @Param('id',ParseIntPipe) id: number
-// ){
-//   console.log(typeof(id));
-//   return {"message":"getOne"};
-// }
-
-// @Post()
-// createOne(
-//   @Body() dto:CreatePostDto,
-//   @Body('content') content:any
-// ){
-//   return dto;
-// }
-// @Put(':id')
-// editOne(
-//   @Param('id') id: string,
-//   @Body() dto:EditPostDto
-// ){
-//    return dto; 
-// }
-// @Delete()
-// deleteOne(@Param('id') id: string){
-
-// }
